@@ -1,4 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6a4cr7gvxmmp"]
+[gd_scene load_steps=5 format=3 uid="uid://b6a4cr7gvxmmp"]
+
+[ext_resource type="PackedScene" uid="uid://d3fqlrg5khau" path="res://box.tscn" id="1_xjrgt"]
+[ext_resource type="PackedScene" uid="uid://gaaynusea0v0" path="res://player.tscn" id="2_oxecl"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6geri"]
 size = Vector3(10, 0.5, 10)
@@ -9,13 +12,13 @@ size = Vector3(10, 0.5, 10)
 [node name="Level1" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.0742652, 0.997239, 0, -0.997239, -0.0742652, 1.42251, 2.28576, 0.406131)
+transform = Transform3D(0.921423, -0.0288565, 0.387488, -0.388561, -0.0684296, 0.918878, -2.56484e-09, -0.997239, -0.0742652, 3.20543, 6.06997, 0.331282)
+shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.953038, 0.302852, 0, -0.302852, 0.953038, 1.52478, 6.47144, 12.6055)
+transform = Transform3D(1, 0, 0, 0, 0.953038, 0.302852, 0, -0.302852, 0.953038, 0, 4, 10)
 
 [node name="Floor" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00147939, 0)
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
@@ -23,3 +26,20 @@ mesh = SubResource("BoxMesh_6geri")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("BoxShape3D_8ni5g")
+
+[node name="Blocks" type="Node3D" parent="."]
+
+[node name="Box3" parent="Blocks" instance=ExtResource("1_xjrgt")]
+transform = Transform3D(0.686272, 0.727344, -0.000854638, -0.727325, 0.686262, 0.00657799, 0.00537097, -0.00389268, 0.999978, -1.54192, 8.70907, -0.0364184)
+
+[node name="Box4" parent="Blocks" instance=ExtResource("1_xjrgt")]
+transform = Transform3D(-0.0614184, 0.998109, 0.00251206, -0.998073, -0.0614381, 0.00874547, 0.00888327, -0.00197008, 0.999959, 0.203968, 9.51225, -0.086041)
+
+[node name="Box1" parent="Blocks" instance=ExtResource("1_xjrgt")]
+transform = Transform3D(0.89702, -0.441984, -0.002276, 0.441983, 0.897023, -0.000675388, 0.00234013, -0.000400113, 0.999997, 0, 3.28793, 0)
+
+[node name="Box2" parent="Blocks" instance=ExtResource("1_xjrgt")]
+transform = Transform3D(0.935888, 0.352283, -0.00335743, -0.352273, 0.935892, 0.00317993, 0.00426243, -0.00179332, 0.999989, -0.25435, 5.19291, -0.0451226)
+
+[node name="Player" parent="." instance=ExtResource("2_oxecl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00831, 3.08418)

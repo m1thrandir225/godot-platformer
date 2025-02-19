@@ -2,11 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://d3fqlrg5khau" path="res://box.tscn" id="1_xjrgt"]
 [ext_resource type="PackedScene" uid="uid://gaaynusea0v0" path="res://player.tscn" id="2_oxecl"]
-[ext_resource type="Texture2D" uid="uid://bpe6350n4ornj" path="res://icon.svg" id="3_g6n64"]
-[ext_resource type="Script" path="res://icon.gd" id="4_c7vrq"]
+[ext_resource type="Environment" uid="uid://yqhn4gshbu1p" path="res://Resources/level_1_environment.tres" id="4_klt84"]
 [ext_resource type="PackedScene" uid="uid://clxl6k0n38fxh" path="res://coin.tscn" id="5_juubg"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38ulk"]
+albedo_color = Color(0.57015, 0.5103, 0.63, 1)
+roughness = 0.0
+
 [sub_resource type="BoxMesh" id="BoxMesh_6geri"]
+material = SubResource("StandardMaterial3D_38ulk")
 size = Vector3(10, 0.5, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ni5g"]
@@ -18,13 +22,11 @@ size = Vector3(10, 0.5, 10)
 transform = Transform3D(0.921423, -0.0288565, 0.387488, -0.388561, -0.0684296, 0.918878, -2.56484e-09, -0.997239, -0.0742652, 3.20543, 6.06997, 0.331282)
 shadow_enabled = true
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.953038, 0.302852, 0, -0.302852, 0.953038, 0, 4, 10)
-
 [node name="Floor" type="StaticBody3D" parent="."]
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0189786, 0, 0.0024972)
 mesh = SubResource("BoxMesh_6geri")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
@@ -47,10 +49,8 @@ transform = Transform3D(0.935888, 0.352283, -0.00335743, -0.352273, 0.935892, 0.
 [node name="Player" parent="." instance=ExtResource("2_oxecl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00831, 3.08418)
 
-[node name="Icon" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.67946, 1.04386, 3.44782)
-texture = ExtResource("3_g6n64")
-script = ExtResource("4_c7vrq")
-
 [node name="Coin" parent="." instance=ExtResource("5_juubg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.29449, 0.865368, 2.97973)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("4_klt84")

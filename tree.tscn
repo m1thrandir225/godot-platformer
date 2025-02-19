@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6xembwwepbeg"]
+
+[ext_resource type="PackedScene" uid="uid://2hsto0c66ovk" path="res://Assets/Models/tree.glb" id="1_8hj04"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gnegy"]
+
+[node name="tree" instance=ExtResource("1_8hj04")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tree" index="2"]
+transform = Transform3D(-9.54099, 0, -4.76837e-07, 0, 17.135, 0, 0, 0, 9.83141, 0, 7.13429, 0)
+shape = SubResource("BoxShape3D_gnegy")
